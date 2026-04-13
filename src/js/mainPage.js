@@ -101,9 +101,9 @@ const data = [
   },
   {
     customer: "Customer",
-    address: " ",
+    address: "",
     products: [
-      { name: "Filter coffee", price: 230},,
+      { name: "Filter coffee", price: 230},
       { name: "Instant coffee", price: 250},
       { name: "Pepper", price: 240},
       { name: "Honey", price: 450 },
