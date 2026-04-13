@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/BS/static/css/main.6aee0259.css",
-    "main.js": "/BS/static/js/main.8cb7c62d.js",
+    "main.js": "/BS/static/js/main.303da87c.js",
     "static/js/453.25d23d32.chunk.js": "/BS/static/js/453.25d23d32.chunk.js",
     "static/media/tybwhitelogo.png": "/BS/static/media/tybwhitelogo.a61d2c2635f5ada02f1e.png",
     "index.html": "/BS/index.html",
     "main.6aee0259.css.map": "/BS/static/css/main.6aee0259.css.map",
-    "main.8cb7c62d.js.map": "/BS/static/js/main.8cb7c62d.js.map",
+    "main.303da87c.js.map": "/BS/static/js/main.303da87c.js.map",
     "453.25d23d32.chunk.js.map": "/BS/static/js/453.25d23d32.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6aee0259.css",
-    "static/js/main.8cb7c62d.js"
+    "static/js/main.303da87c.js"
   ]
 }
