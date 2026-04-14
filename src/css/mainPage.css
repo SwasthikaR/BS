@@ -127,10 +127,13 @@ button{
   .footer{
     margin-top: 150px;
   }
-  .signature img{
-    display:block;
-    padding-left: 600px;
-  }
+  .signature {
+  text-align: right;
+}
+
+.signature img {
+  width: 120px; /* optional */
+}
 }
 
 
@@ -160,5 +163,10 @@ button{
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
+    .signature img {
+    display: block;
+    margin-left: auto;
+    margin-right: 20px;
+  }
 
 }
