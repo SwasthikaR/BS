@@ -124,6 +124,9 @@ button{
   .itemDisplayTable, .itemDisplayTable th, .itemDisplayTable td, .itemDisplayTable tr{
     padding: 1px;
   }
+  .footer{
+    margin-top: 150px;
+  }
 }
 
 

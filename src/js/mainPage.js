@@ -1,11 +1,11 @@
 import '../css/mainPage.css';
 
 import React, {useState} from 'react';
-import { toWords } from 'number-to-words';
 
 import logo from "../image/tybwhitelogo.png";
 import logoblack from "../image/tyblogoblack.jpeg"
 import eSign from "../image/eSign.jpeg"
+import esign1 from "../image/georgeEsign.jpeg"
 
 const data = [
   {
@@ -346,7 +346,7 @@ function MainPage(){
                     Payment must be paid within 15 days from the issue of bill.
                     </div>
                     <div className='signature'>
-                        <img src={eSign} style={{width:"100px", marginLeft:"360px"}}/>
+                        <img src={esign1} style={{width:"70px", marginLeft:"350px"}}/>
                         Signature
                     </div>
                 </div>
