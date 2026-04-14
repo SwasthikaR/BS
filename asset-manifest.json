@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/BS/static/css/main.d757ead3.css",
-    "main.js": "/BS/static/js/main.bdef2b16.js",
+    "main.css": "/BS/static/css/main.a52f9fe6.css",
+    "main.js": "/BS/static/js/main.0ca11dd5.js",
     "static/js/453.25d23d32.chunk.js": "/BS/static/js/453.25d23d32.chunk.js",
     "static/media/tybwhitelogo.png": "/BS/static/media/tybwhitelogo.a61d2c2635f5ada02f1e.png",
     "static/media/eSign.jpeg": "/BS/static/media/eSign.835add1d03a07edeece8.jpeg",
+    "static/media/georgeEsign.jpeg": "/BS/static/media/georgeEsign.7c2460d9748c83d5653c.jpeg",
     "index.html": "/BS/index.html",
-    "main.d757ead3.css.map": "/BS/static/css/main.d757ead3.css.map",
-    "main.bdef2b16.js.map": "/BS/static/js/main.bdef2b16.js.map",
+    "main.a52f9fe6.css.map": "/BS/static/css/main.a52f9fe6.css.map",
+    "main.0ca11dd5.js.map": "/BS/static/js/main.0ca11dd5.js.map",
     "453.25d23d32.chunk.js.map": "/BS/static/js/453.25d23d32.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d757ead3.css",
-    "static/js/main.bdef2b16.js"
+    "static/css/main.a52f9fe6.css",
+    "static/js/main.0ca11dd5.js"
   ]
 }
