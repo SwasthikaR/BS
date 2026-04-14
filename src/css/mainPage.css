@@ -94,13 +94,38 @@ button{
     margin-right: 30px;
     font-weight: bold;
     margin-left: 200px;
-    padding-top: 70px;
-    padding-bottom: 140px;
 }
 
 .printBill{
     visibility: hidden;
 }
+
+.footer{
+    margin-top: 220px;
+}
+
+@media (max-width: 600px) {
+  .header{
+    width: 500px;
+    text-align: center;
+  }
+  .inputDetails {
+    flex-direction: column;
+  }
+  .inputDetails select{
+    margin-bottom: 10px;
+  }
+  .inputDetails input{
+    margin-bottom: 10px;
+  }
+  .inputDetails button{
+    width: 100px;
+  }
+  .itemDisplayTable, .itemDisplayTable th, .itemDisplayTable td, .itemDisplayTable tr{
+    padding: 1px;
+  }
+}
+
 
 @media print{
     @page{

@@ -5,6 +5,7 @@ import { toWords } from 'number-to-words';
 
 import logo from "../image/tybwhitelogo.png";
 import logoblack from "../image/tyblogoblack.jpeg"
+import eSign from "../image/eSign.jpeg"
 
 const data = [
   {
@@ -221,7 +222,7 @@ function MainPage(){
                 <h2>Credit Bill</h2>
                 <div className='inputDetails'>
                     {/* Customer dropdown */}
-                    <select style={{width:"300px", border:"2px solid black", borderRadius:"5px"}} value={customer} onChange={(e)=>{setCustomer(e.target.value); setProduct("");}}>
+                    <select style={{width:"300px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} value={customer} onChange={(e)=>{setCustomer(e.target.value); setProduct("");}}>
                         <option value="">Select customer</option>
                         {data.map((c) => (
                             <option key={c.customer} value={c.customer}>
@@ -241,10 +242,10 @@ function MainPage(){
                     </select>
 
                     {/* Quantity selection */}
-                    <input style={{width:"300px", border:"2px solid black", borderRadius:"5px", paddingLeft:"5px"}} type='number' value={quantity} min='1' onChange={(e) => setQuantity(Number(e.target.value))}/>
+                    <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='number' value={quantity} min='1' onChange={(e) => setQuantity(Number(e.target.value))}/>
 
                     {/* Price */}
-                    <input style={{width:"300px", border:"2px solid black", borderRadius:"5px", paddingLeft:"5px"}} type='text' value={totalPrice ? `${totalPrice}`: ""} readOnly placeholder='Total price'/>
+                    <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='text' value={totalPrice ? `${totalPrice}`: ""} readOnly placeholder='Total price'/>
 
                     {/* Add Button */}
                     <button onClick={handleAdd}>Add</button>
@@ -339,12 +340,13 @@ function MainPage(){
                         <td style={{width:"90px", textAlign:"center"}}>{grandTotal}</td>
                     </tr>
                 </table>
-                <div style={{ position: "absolute", bottom: 0, display:"flex" }}>
+                <div className='footer'>
                     <div className='terms'>
                     <span style={{fontWeight:"bold"}}>Terms & Condition<sup>*</sup></span><br/>
                     Payment must be paid within 15 days from the issue of bill.
                     </div>
                     <div className='signature'>
+                        <img src={eSign} style={{width:"100px", marginLeft:"360px"}}/>
                         Signature
                     </div>
                 </div>
