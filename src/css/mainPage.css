@@ -128,7 +128,8 @@ button{
     margin-top: 150px;
   }
   .signature img{
-    width: 30px;
+    display:block;
+    padding-left: 600px;
   }
 }
 

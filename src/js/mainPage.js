@@ -346,7 +346,7 @@ function MainPage(){
                     Payment must be paid within 15 days from the issue of bill.
                     </div>
                     <div className='signature'>
-                        <img src={esign1} style={{width:"70px", marginLeft:"350px"}}/>
+                        <img src={esign1} style={{width:"70px", marginLeft:"350px"}}/><br/>
                         Signature
                     </div>
                 </div>
