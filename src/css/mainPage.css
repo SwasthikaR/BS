@@ -106,7 +106,7 @@ button{
 
 @media (max-width: 600px) {
   .header{
-    width: 500px;
+    width: 100%;
     text-align: center;
   }
   .inputDetails {
