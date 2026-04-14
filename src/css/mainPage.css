@@ -128,8 +128,7 @@ button{
     margin-top: 150px;
   }
   .signature img{
-    margin-left: 550px;
-    padding-left: 550px;
+    width: 30px;
   }
 }
 
