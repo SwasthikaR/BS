@@ -125,6 +125,7 @@ function MainPage(){
     const [product, setProduct] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [cart, setCart] = useState([]);
+    const [billNo, setBillNo] = useState(1);
 
     const selectedCustomer = data.find((c) => c.customer === customer);
 
@@ -212,6 +213,11 @@ function MainPage(){
         return convert(num) + " Only";
     }
 
+    const handlePrint = () => {
+        window.print();
+        setBillNo(prev => prev + 1);
+    };
+
     return(
         <div className='maindiv'>
             <div className="header">
@@ -289,7 +295,7 @@ function MainPage(){
             {/* Grand Total */}
             <h2>Total: ₹{grandTotal}</h2>
 
-            <button onClick={() => window.print()} style={{position:"relative", zIndex:"10000"}}>Print</button>
+            <button onClick={handlePrint} style={{position:"relative", zIndex:"10000"}}>Print</button>
 
             {/* Formatting to print bill */}
             <div className='printBill'>
@@ -306,6 +312,7 @@ function MainPage(){
                 </div>
                 <div className='customerDetails'>
                     <div className='toAddr'>
+                        <span style={{fontWeight:"bold"}}>BILL NO:</span>{billNo}<br/>
                         <span style={{fontWeight:"bold"}}>BILLING TO:</span> <br/>
                         {customer},<br/>
                         {address}.
