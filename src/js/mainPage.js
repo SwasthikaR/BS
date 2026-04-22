@@ -1,6 +1,6 @@
 import '../css/mainPage.css';
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import logo from "../image/tybwhitelogo.png";
 import logoblack from "../image/tyblogoblack.jpeg"
@@ -118,14 +118,14 @@ const data = [
 
 function MainPage(){
 
-    const currentDate = new Date();
-    const date = currentDate.toLocaleDateString();
-
     const [customer, setCustomer] = useState("");
     const [product, setProduct] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [cart, setCart] = useState([]);
     const [billNo, setBillNo] = useState(1);
+    const [isManual, setIsManual] = useState(false);
+    const [selectedDate, setSelectedDate] = useState("");
+
 
     const selectedCustomer = data.find((c) => c.customer === customer);
 
@@ -218,6 +218,21 @@ function MainPage(){
         setBillNo(prev => prev + 1);
     };
 
+    const currentDate = new Date();
+    const date = currentDate.toISOString().split("T")[0];
+    
+    useEffect(() => {
+        if (!isManual){
+            setSelectedDate(date);
+        }
+    }, [isManual])
+
+    const formatDate = (dateStr) => {
+        if(!dateStr) return "";
+        const[year, month, day] = dateStr.split("-");
+        return `${day}/${month}/${year}`;
+    }
+
     return(
         <div className='maindiv'>
             <div className="header">
@@ -226,6 +241,10 @@ function MainPage(){
             </div>
             <div className='mainbody'>
                 <h2>Credit Bill</h2>
+                <input type='date' style={{marginRight:"10px",marginBottom:"10px", paddingTop:"3px", paddingBottom:"3px"}} value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} disabled={!isManual}></input>
+                <button onClick={()=>setIsManual(!isManual)}>
+                    {isManual ? "Today" : "Custom"}
+                </button>
                 <div className='inputDetails'>
                     {/* Customer dropdown */}
                     <select style={{width:"300px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} value={customer} onChange={(e)=>{setCustomer(e.target.value); setProduct("");}}>
@@ -312,14 +331,14 @@ function MainPage(){
                 </div>
                 <div className='customerDetails'>
                     <div className='toAddr'>
-                        <span style={{fontWeight:"bold"}}>BILL NO:</span>{billNo}<br/>
+                        <span style={{fontWeight:"bold"}}>BILL NO: </span>{billNo}<br/>
                         <span style={{fontWeight:"bold"}}>BILLING TO:</span> <br/>
                         {customer},<br/>
                         {address}.
                     </div>
                     <div className='toDate'>
                         <span style={{fontWeight:"bold"}}>BILLING DATE:</span><br/>
-                        {date}
+                        {formatDate(selectedDate)}
                     </div>
                 </div>
                 <table className='itemTable'>
