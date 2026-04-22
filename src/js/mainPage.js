@@ -215,7 +215,7 @@ function MainPage(){
 
     const handlePrint = () => {
         window.print();
-        setBillNo(prev => prev + 1);
+        // setBillNo(prev => prev + 1);
     };
 
     const currentDate = new Date();
@@ -241,10 +241,17 @@ function MainPage(){
             </div>
             <div className='mainbody'>
                 <h2>Credit Bill</h2>
-                <input type='date' style={{marginRight:"10px",marginBottom:"10px", paddingTop:"3px", paddingBottom:"3px"}} value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} disabled={!isManual}></input>
-                <button onClick={()=>setIsManual(!isManual)}>
-                    {isManual ? "Today" : "Custom"}
-                </button>
+                <div className='selectDateandBillNo'>
+                    <div>
+                        <input type='date' style={{marginRight:"10px", paddingTop:"3px", paddingBottom:"3px"}} value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} disabled={!isManual}></input>
+                        <button onClick={()=>setIsManual(!isManual)}>
+                            {isManual ? "Today" : "Custom"}
+                        </button>
+                    </div>
+                    <div>
+                        <input type='number' placeholder='Bill No' onChange={(e) => setBillNo(Number(e.target.value))} style={{marginRight:"10px",marginBottom:"10px", paddingTop:"3px", paddingBottom:"3px", border:"2px solid black", borderRadius:'5px', paddingLeft:"5px"}}></input>
+                    </div>
+                </div>
                 <div className='inputDetails'>
                     {/* Customer dropdown */}
                     <select style={{width:"300px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} value={customer} onChange={(e)=>{setCustomer(e.target.value); setProduct("");}}>

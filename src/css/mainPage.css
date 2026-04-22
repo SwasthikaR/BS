@@ -104,6 +104,12 @@ button{
     margin-top: 220px;
 }
 
+.selectDateandBillNo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 600px) {
   .header{
     width: 100%;
