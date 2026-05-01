@@ -88,6 +88,7 @@ const data = [
     address: "Yercaud",
     products: [
       { name: "Instant coffee", price: 250},
+      { name: "Pepper", price: 240},
       { name: "Honey", price: 450 },
       { name: "Small combo", price: 650 },
       { name: "Big combo", price: 1200 }
@@ -102,14 +103,13 @@ const data = [
   },
   {
     customer: "Customer",
-    address: "",
     products: [
-      { name: "Filter coffee", price: 230},
-      { name: "Instant coffee", price: 250},
-      { name: "Pepper", price: 240},
-      { name: "Honey", price: 450 },
-      { name: "Small combo", price: 650 },
-      { name: "Big combo", price: 1200 }
+      { name: "Filter coffee"},
+      { name: "Instant coffee"},
+      { name: "Pepper"},
+      { name: "Honey"},
+      { name: "Small combo"},
+      { name: "Big combo"}
     ]
   }
 ];
@@ -125,7 +125,9 @@ function MainPage(){
     const [billNo, setBillNo] = useState(1);
     const [isManual, setIsManual] = useState(false);
     const [selectedDate, setSelectedDate] = useState("");
-
+    const [balance, setBalance] = useState()
+    const [custPrice, setCustPrice] = useState();
+    
 
     const selectedCustomer = data.find((c) => c.customer === customer);
 
@@ -135,8 +137,12 @@ function MainPage(){
 
     const selectedProduct = products.find((p) => p.name === product);
 
-    const price = selectedProduct ? selectedProduct.price : 0;
+    const price =
+    customer !== "Customer"
+        ? (selectedProduct?.price || 0)
+        : custPrice;
     const totalPrice = price*quantity
+
 
     // Add item to cart
     const handleAdd = () => {
@@ -164,7 +170,16 @@ function MainPage(){
     };
 
     // Final total
-    const grandTotal = cart.reduce((sum, item) => sum + item.total, 0);
+    let grandTotal;
+    let balSNo;
+    if(balance){
+        grandTotal = cart.reduce((sum, item) => sum + item.total, 0);
+        grandTotal+=balance;
+        balSNo = cart.length+1;
+    }
+    else{
+        grandTotal = cart.reduce((sum, item) => sum + item.total, 0);
+    }
 
     // amount to word converion
 
@@ -276,12 +291,16 @@ function MainPage(){
                     {/* Quantity selection */}
                     <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='number' value={quantity} min='1' onChange={(e) => setQuantity(Number(e.target.value))}/>
 
-                    {/* Price */}
+                    {/* customised price input box for customer */}
+                    <input type='number' onChange={(e) => setCustPrice(e.target.value)} disabled={customer!="Customer"} placeholder='Only for customers'></input>
+
+                    {/* Price x quantity */}
                     <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='text' value={totalPrice ? `${totalPrice}`: ""} readOnly placeholder='Total price'/>
 
                     {/* Add Button */}
                     <button onClick={handleAdd}>Add</button>
                 </div>
+                <input onChange={(e) => setBalance(Number(e.target.value))} style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='text' placeholder='Balance'/>
 
             {/* Cart Display */}
             <h3 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize:""}}>Items purchased</h3>
@@ -340,7 +359,7 @@ function MainPage(){
                     <div className='toAddr'>
                         <span style={{fontWeight:"bold"}}>BILL NO: </span>{billNo}<br/>
                         <span style={{fontWeight:"bold"}}>BILLING TO:</span> <br/>
-                        {customer},<br/>
+                        {customer}{customer!="Customer" ? "," : "."}<br/>
                         {address}.
                     </div>
                     <div className='toDate'>
@@ -365,6 +384,14 @@ function MainPage(){
                         <td style={{textAlign:"center"}}>₹{item.total}</td>
                     </tr>
                     ))}
+                    {balance > 0 &&(
+                        <tr>
+                            <td style={{textAlign:"center"}}>{balSNo}</td>
+                            <td style={{paddingLeft:"5px"}}>Balance</td>
+                            <td style={{textAlign:"center"}} colSpan={2}>₹{balance}</td>
+                            <td style={{textAlign:"center"}}>₹{balance}</td>
+                        </tr>
+                    )}
                 </table>
                 <table className='amtTable'>
                     <tr>
