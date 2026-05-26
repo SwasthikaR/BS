@@ -115,7 +115,7 @@ const data = [
   }
 ];
 
-// const msme = Number(process.env.REACT_APP_MSME);
+const msme = process.env.REACT_APP_MSME;
 
 function MainPage(){
 
@@ -353,7 +353,7 @@ function MainPage(){
                     <span style={{fontSize:"15px"}}>The Yercaud Bean</span><br/>
                     <span>Lady's seat Rd,</span><br/>
                     <span>Yercaud.</span><br/>
-                    {/* <span>MSME: {msme}</span><br/> */}
+                    <span>MSME: {msme}</span><br/>
                     9994797824<br/>
                     8489333469
                 </div>
