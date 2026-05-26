@@ -115,7 +115,7 @@ const data = [
   }
 ];
 
-const msme = Number(process.env.REACT_APP_MSME);
+// const msme = Number(process.env.REACT_APP_MSME);
 
 function MainPage(){
 
