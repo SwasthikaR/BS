@@ -72,6 +72,17 @@ const data = [
     ]
   },
   {
+    customer: "Kolaahalam Kodaikanal",
+    address: "Kodaikanal",
+    products: [
+      { name: "Filter coffee", price: 230},
+      { name: "Instant coffee", price: 250},
+      { name: "Pepper", price: 240},
+      { name: "Honey", price: 430 },
+      { name: "Small combo", price: 625 }
+    ]
+  },
+  {
     customer: "DNC Shevaroys",
     address: "Yercaud",
     products: [
