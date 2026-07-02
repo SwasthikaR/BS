@@ -19,7 +19,7 @@ function Dashboard(){
                 </div>
                 <div>
                     <button onClick={() => navigate("/")}>
-                        <HomeIcon />
+                        Home
                     </button>
                 </div>
             </div>

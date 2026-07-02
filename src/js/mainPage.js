@@ -274,7 +274,7 @@ function MainPage(){
                 </div>
                 <div>
                     <button onClick={() => navigate("/dashboard")}>
-                        <DashboardIcon />
+                        Dashboard
                     </button>
                 </div>
             </div>
