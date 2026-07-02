@@ -1,11 +1,14 @@
 import '../css/mainPage.css';
 
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import logo from "../image/tybwhitelogo.png";
 import logoblack from "../image/tyblogoblack.jpeg"
 import eSign from "../image/eSign.jpeg"
 import esign1 from "../image/georgeEsign.jpeg"
+
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 const data = [
   {
@@ -260,11 +263,20 @@ function MainPage(){
         return `${day}/${month}/${year}`;
     }
 
+    const navigate = useNavigate();
+
     return(
         <div className='maindiv'>
             <div className="header">
-                <img src={logo} alt='logo'></img><br/>
-                <span style={{color:"white", paddingLeft:"20px"}}>The Yercaud Bean</span>
+                <div>
+                    <img src={logo} alt='logo'></img><br/>
+                    <span style={{color:"white", paddingLeft:"20px"}}>The Yercaud Bean</span>
+                </div>
+                <div>
+                    <button onClick={() => navigate("/dashboard")}>
+                        <DashboardIcon />
+                    </button>
+                </div>
             </div>
             <div className='mainbody'>
                 <h2>Credit Bill</h2>
