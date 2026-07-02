@@ -365,6 +365,7 @@ function MainPage(){
             <h2>Total: ₹{grandTotal}</h2>
 
             <button onClick={handlePrint} style={{position:"relative", zIndex:"10000"}}>Print</button>
+            <button onClick={handlePrint} style={{position:"relative", zIndex:"10000"}}>Print</button>
 
             {/* Formatting to print bill */}
             <div className='printBill'>
