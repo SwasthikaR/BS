@@ -19,28 +19,44 @@ function Dashboard(){
                 </div>
                 <div>
                     <button onClick={() => navigate("/")}>
-                        Home
+                        <HomeIcon />
                     </button>
                 </div>
             </div>
             <div className="dashboardContent">
-                <h1>Dashboard</h1>
+                <h1>DASHBOARD</h1>
+                <h2>Individuals</h2>
                 <div className='productSales'>
                     <div className='product'>
-                        <p style={{fontSize:"30px"}}>Instant coffee</p>
-                        <p style={{fontSize:"50px", fontWeight:"bold"}}>50</p>
+                        <p>Instant coffee</p>
+                        <p>50</p>
                     </div>
                     <div className='product'>
-                        <p style={{fontSize:"30px"}}>Filter coffee</p>
-                        <p style={{fontSize:"50px", fontWeight:"bold"}}>20</p>
+                        <p>Filter coffee</p>
+                        <p>20</p>
                     </div>
                     <div className='product'>
-                        <p style={{fontSize:"30px"}}>Honey</p>
-                        <p style={{fontSize:"50px", fontWeight:"bold"}}>30</p>
+                        <p>Honey</p>
+                        <p>30</p>
                     </div>
                     <div className='product'>
-                        <p style={{fontSize:"30px"}}>Black pepper</p>
-                        <p style={{fontSize:"50px", fontWeight:"bold"}}>10</p>
+                        <p>Black pepper</p>
+                        <p>10</p>
+                    </div>
+                </div>
+                <h2>Combos</h2>
+                <div className='comboProducts'>
+                    <div className='product'>
+                        <p>Small Combo</p>
+                        <p>10</p>
+                    </div>
+                    <div className='product'>
+                        <p>Medium Combo</p>
+                        <p>10</p>
+                    </div>
+                    <div className='product'>
+                        <p>Big Combo</p>
+                        <p>10</p>
                     </div>
                 </div>
             </div>

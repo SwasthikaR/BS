@@ -10,6 +10,10 @@ import esign1 from "../image/georgeEsign.jpeg"
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
 
+const units = ["kg", "gms", "pcs"]
+
+const productForCustomers = [ "Filter Coffee", "Instant Coffee", "Pepper", "Honey", "Small combo", "Medium combo", "Big combo" ]
+
 const data = [
   {
     customer: "Mango hills",
@@ -133,6 +137,7 @@ const msme = process.env.REACT_APP_MSME;
 
 function MainPage(){
 
+    // for resorts
     const [customer, setCustomer] = useState("");
     const [product, setProduct] = useState("");
     const [quantity, setQuantity] = useState(1);
@@ -142,6 +147,16 @@ function MainPage(){
     const [selectedDate, setSelectedDate] = useState("");
     const [balance, setBalance] = useState()
     const [custPrice, setCustPrice] = useState();
+    const [unit, setUnit] = useState("");
+
+    // only for customers
+    const [cust, setCust] = useState("");
+    const [addr, setAddr] = useState("");
+    const [custProduct, setCustProduct] = useState("");
+    const [custQuanity, setCustQuantity] = useState(1);
+    const [custunit, setCustUnit] = useState("");
+    const [customerPrice, setCustomerPrice] = useState();
+    const [customerCart, setCustomerCart] = useState([]);
     
 
     const selectedCustomer = data.find((c) => c.customer === customer);
@@ -157,6 +172,29 @@ function MainPage(){
         ? (selectedProduct?.price || 0)
         : custPrice;
     const totalPrice = price*quantity
+    const custTotalPrice = customerPrice*custQuanity
+
+    const handleAddCustomer = () => {
+        if (!cust || !custProduct || custQuanity <= 0) return;
+        const cartItem = {
+        id: Date.now(),
+        cust,
+        addr,
+        custProduct,
+        custQuanity,
+        custunit,
+        customerPrice,
+        custtotal: custTotalPrice
+        };
+
+        setCustomerCart([...customerCart, cartItem]);
+
+        // Reset inputs
+        setCustProduct("");
+        setCustQuantity(1);
+
+
+    };
 
 
     // Add item to cart
@@ -168,6 +206,7 @@ function MainPage(){
         customer,
         product,
         quantity,
+        unit,
         price,
         total: totalPrice
         };
@@ -177,6 +216,7 @@ function MainPage(){
         // Reset inputs
         setProduct("");
         setQuantity(1);
+
     };
 
     // Delete item
@@ -192,8 +232,10 @@ function MainPage(){
         grandTotal+=balance;
         balSNo = cart.length+1;
     }
-    else{
+    else if (cart.length != 0) {
         grandTotal = cart.reduce((sum, item) => sum + item.total, 0);
+    } else {
+        grandTotal = customerCart.reduce((sum, item) => sum + item.custtotal, 0);
     }
 
     // amount to word converion
@@ -257,6 +299,7 @@ function MainPage(){
         }
     }, [isManual])
 
+
     const formatDate = (dateStr) => {
         if(!dateStr) return "";
         const[year, month, day] = dateStr.split("-");
@@ -274,7 +317,7 @@ function MainPage(){
                 </div>
                 <div>
                     <button onClick={() => navigate("/dashboard")}>
-                        Dashboard
+                        <DashboardIcon />
                     </button>
                 </div>
             </div>
@@ -315,8 +358,14 @@ function MainPage(){
                     {/* Quantity selection */}
                     <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='number' value={quantity} min='1' onChange={(e) => setQuantity(Number(e.target.value))}/>
 
-                    {/* customised price input box for customer */}
-                    <input type='number' onChange={(e) => setCustPrice(e.target.value)} disabled={customer!="Customer"} placeholder='Only for customers'></input>
+                    <select value={unit} onChange={(e)=>setUnit(e.target.value)}>
+                        <option value="">Select Unit</option>
+                        {units.map((p) => (
+                            <option key={p} value={p}>
+                                {p}
+                            </option>
+                        ))}
+                    </select>
 
                     {/* Price x quantity */}
                     <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='text' value={totalPrice ? `${totalPrice}`: ""} readOnly placeholder='Total price'/>
@@ -326,6 +375,39 @@ function MainPage(){
                 </div>
                 <input onChange={(e) => setBalance(Number(e.target.value))} style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='text' placeholder='Balance'/>
 
+        {/* for customers only */}
+        <h2>Only for customers</h2>
+
+            <div className='inputDetailsForCustomers'>
+                <input className='customerName' type='text' placeholder='Enter Name' value={cust} onChange={(e) => setCust(e.target.value)}></input>
+                <input className='customerAddr' type='text' placeholder='Enter Address' value={addr} onChange={(e) => setAddr(e.target.value)}></input>
+                <select value={custProduct} onChange={(e)=>setCustProduct(e.target.value)}>
+                    <option value="">Select product</option>
+                    {productForCustomers.map((p) => (
+                        <option key={p} value={p}>
+                            {p}
+                        </option>
+                    ))}
+                </select>
+                <input className='customerQuantity' type='number' placeholder='Enter Quantity' value={custQuanity} min='1' onChange={(e) => setCustQuantity(Number(e.target.value))}></input>
+                <select value={custunit} onChange={(e)=>setCustUnit(e.target.value)}>
+                    <option value="">Select Unit</option>
+                    {units.map((p) => (
+                        <option key={p} value={p}>
+                            {p}
+                        </option>
+                    ))}
+                </select>
+
+                <input placeholder='Enter Price' type="text" value={customerPrice} onChange={(e) => setCustomerPrice(e.target.value)}></input>
+
+                {/* Price x quantity */}
+                <input type='text' value={custTotalPrice ? `${custTotalPrice}`: ""} readOnly placeholder='Total price'/><br/>
+
+                {/* Add Button */}
+                <button onClick={handleAddCustomer}>Add</button>
+            </div>
+                
             {/* Cart Display */}
             <h3 style={{ fontFamily: "'Times New Roman', Times, serif", fontSize:""}}>Items purchased</h3>
             {cart.length === 0 ? (
@@ -344,22 +426,56 @@ function MainPage(){
                 </thead>
                 <tbody>
                     {cart.map((item) => (
-                    <tr key={item.id}>
-                        <td>{item.customer}</td>
-                        <td>{item.product}</td>
-                        <td>{item.quantity}</td>
-                        <td>₹{item.price}</td>
-                        <td>₹{item.total}</td>
-                        <td>
-                        <button onClick={() => handleDelete(item.id)}>
-                            Delete
-                        </button>
-                        </td>
-                    </tr>
+                        <tr key={item.id}>
+                            <td>{item.customer}</td>
+                            <td>{item.product}</td>
+                            <td>{item.quantity+item.unit}</td>
+                            <td>₹{item.price}</td>
+                            <td>₹{item.total}</td>
+                            <td>
+                            <button onClick={() => handleDelete(item.id)}>
+                                Delete
+                            </button>
+                            </td>
+                        </tr>
                     ))}
                 </tbody>
                 </table>
             )}
+
+            {customerCart.length === 0 ? (
+                <p style={{color:"grey", fontFamily:"monospace", fontSize:"15px"}}>No customer items added</p>
+            ) : (
+                <table className='itemDisplayTable'>
+                <thead>
+                    <tr>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {customerCart.map((item) => (
+                        <tr key={item.id}>
+                            <td>{item.cust}</td>
+                            <td>{item.custProduct}</td>
+                            <td>{item.custQuanity+item.custunit}</td>
+                            <td>₹{item.customerPrice}</td>
+                            <td>₹{item.custtotal}</td>
+                            <td>
+                            <button onClick={() => handleDelete(item.id)}>
+                                Delete
+                            </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+                </table>
+            )}
+
 
             {/* Grand Total */}
             <h2>Total: ₹{grandTotal}</h2>
@@ -388,8 +504,10 @@ function MainPage(){
                     <div className='toAddr'>
                         <span style={{fontWeight:"bold"}}>BILL NO: </span>{billNo}<br/>
                         <span style={{fontWeight:"bold"}}>BILLING TO:</span> <br/>
-                        {customer}{customer!="Customer" ? "," : "."}<br/>
-                        {address}.
+                        {cust ? cust : customer}
+                        {(cust ? cust : customer) !== "Customer" ? "," : "."}
+                        <br />
+                        {addr ? addr : address}.
                     </div>
                     <div className='toDate'>
                         <span style={{fontWeight:"bold"}}>BILLING DATE:</span><br/>
@@ -408,9 +526,18 @@ function MainPage(){
                     <tr key={item.id} className='itemDisplay'>
                         <td style={{textAlign:"center"}}>{index + 1}</td>
                         <td style={{paddingLeft:"5px"}}>{item.product}</td>
-                        <td style={{textAlign:"center"}}>{item.quantity}</td>
+                        <td style={{textAlign:"center"}}>{item.quantity+item.unit}</td>
                         <td style={{textAlign:"center"}}>₹{item.price}</td>
                         <td style={{textAlign:"center"}}>₹{item.total}</td>
+                    </tr>
+                    ))}
+                    {customerCart.map((item, index)  => (
+                    <tr key={item.id} className='itemDisplay'>
+                        <td style={{textAlign:"center"}}>{index + 1}</td>
+                        <td style={{paddingLeft:"5px"}}>{item.custProduct}</td>
+                        <td style={{textAlign:"center"}}>{item.custQuanity+item.custunit}</td>
+                        <td style={{textAlign:"center"}}>₹{item.customerPrice}</td>
+                        <td style={{textAlign:"center"}}>₹{item.custtotal}</td>
                     </tr>
                     ))}
                     {balance > 0 &&(

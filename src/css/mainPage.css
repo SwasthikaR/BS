@@ -26,6 +26,26 @@
     margin-bottom: 27px;
 }
 
+.inputDetailsForCustomers input{
+    width: 290px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    margin-bottom: 27px;
+}
+
+.inputDetailsForCustomers select{
+    width: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    margin-bottom: 27px;
+}
+
 button{
     background-color: black;
     color: white;
@@ -117,7 +137,7 @@ button{
     width: 100%;
     text-align: center;
   }
-  .inputDetails {
+  .inputDetails, .inputDetailsForCustomers {
     flex-direction: column;
   }
   .inputDetails select{
