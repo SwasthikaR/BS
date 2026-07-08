@@ -147,7 +147,6 @@ function MainPage(){
     const [selectedDate, setSelectedDate] = useState("");
     const [balance, setBalance] = useState()
     const [custPrice, setCustPrice] = useState();
-    const [unit, setUnit] = useState("");
 
     // only for customers
     const [cust, setCust] = useState("");
@@ -171,15 +170,8 @@ function MainPage(){
     customer !== "Customer"
         ? (selectedProduct?.price || 0)
         : custPrice;
-
-
-    let totalPrice;
-    if(unit == "gms"){
-        totalPrice = (quantity/1000)*price
-    }
-    else{
-        totalPrice = price*quantity
-    }
+    const totalPrice = price*quantity
+    
     
 
     let custTotalPrice;
@@ -223,7 +215,6 @@ function MainPage(){
         customer,
         product,
         quantity,
-        unit,
         price,
         total: totalPrice
         };
@@ -375,15 +366,6 @@ function MainPage(){
                     {/* Quantity selection */}
                     <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='number' placeholder='Enter quantiy' value={quantity} min='1' onChange={(e) => setQuantity(Number(e.target.value))}/>
 
-                    <select value={unit} onChange={(e)=>setUnit(e.target.value)} style={{width:"300px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}}>
-                        <option value="">Select Unit</option>
-                        {units.map((p) => (
-                            <option key={p} value={p}>
-                                {p}
-                            </option>
-                        ))}
-                    </select>
-
                     {/* Price x quantity */}
                     <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='text' value={totalPrice ? `${totalPrice}`: ""} readOnly placeholder='Total price'/>
 
@@ -436,7 +418,7 @@ function MainPage(){
                     <th>Customer</th>
                     <th>Product</th>
                     <th>Qty</th>
-                    <th>Price</th>
+                    <th>Price/kg</th>
                     <th>Total</th>
                     <th>Action</th>
                     </tr>
@@ -446,7 +428,7 @@ function MainPage(){
                         <tr key={item.id}>
                             <td>{item.customer}</td>
                             <td>{item.product}</td>
-                            <td>{item.quantity+item.unit}</td>
+                            <td>{item.quantity}</td>
                             <td>₹{item.price}</td>
                             <td>₹{item.total}</td>
                             <td>
@@ -469,7 +451,7 @@ function MainPage(){
                     <th>Customer</th>
                     <th>Product</th>
                     <th>Qty</th>
-                    <th>Price</th>
+                    <th>Unit Price</th>
                     <th>Total</th>
                     <th>Action</th>
                     </tr>
@@ -492,7 +474,6 @@ function MainPage(){
                 </tbody>
                 </table>
             )}
-
 
             {/* Grand Total */}
             <h2>Total: ₹{grandTotal}</h2>
@@ -536,14 +517,14 @@ function MainPage(){
                             <td style={{width:"50px"}}>S No.</td>
                             <td>Description</td>
                             <td style={{width:"90px"}}>Quantity</td>
-                            <td style={{width:"90px"}}>Price</td>
+                            <td style={{width:"90px"}}>Unit Price</td>
                             <td style={{width:"90px"}}>Total Price</td>
                     </tr>
                     {cart.map((item, index)  => (
                     <tr key={item.id} className='itemDisplay'>
                         <td style={{textAlign:"center"}}>{index + 1}</td>
                         <td style={{paddingLeft:"5px"}}>{item.product}</td>
-                        <td style={{textAlign:"center"}}>{item.quantity+item.unit}</td>
+                        <td style={{textAlign:"center"}}>{item.quantity}</td>
                         <td style={{textAlign:"center"}}>₹{item.price}</td>
                         <td style={{textAlign:"center"}}>₹{item.total}</td>
                     </tr>
