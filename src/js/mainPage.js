@@ -171,8 +171,25 @@ function MainPage(){
     customer !== "Customer"
         ? (selectedProduct?.price || 0)
         : custPrice;
-    const totalPrice = price*quantity
-    const custTotalPrice = customerPrice*custQuanity
+
+
+    let totalPrice;
+    if(unit == "gms"){
+        totalPrice = (quantity/1000)*custPrice
+    }
+    else{
+        totalPrice = price*quantity
+    }
+    
+
+    let custTotalPrice;
+    if(custunit == "gms"){
+        custTotalPrice = (custQuanity/1000)*customerPrice
+    }
+    else{
+        custTotalPrice = customerPrice*custQuanity
+    }
+    
 
     const handleAddCustomer = () => {
         if (!cust || !custProduct || custQuanity <= 0) return;
@@ -398,7 +415,7 @@ function MainPage(){
                         </option>
                     ))}
                 </select>
-
+                <p>Enter per kg price if you are choosing gms/kg.</p>
                 <input placeholder='Enter Price' type="text" value={customerPrice} onChange={(e) => setCustomerPrice(e.target.value)}></input>
 
                 {/* Price x quantity */}
