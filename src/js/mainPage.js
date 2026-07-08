@@ -140,7 +140,7 @@ function MainPage(){
     // for resorts
     const [customer, setCustomer] = useState("");
     const [product, setProduct] = useState("");
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState("");
     const [cart, setCart] = useState([]);
     const [billNo, setBillNo] = useState(1);
     const [isManual, setIsManual] = useState(false);
@@ -153,7 +153,7 @@ function MainPage(){
     const [cust, setCust] = useState("");
     const [addr, setAddr] = useState("");
     const [custProduct, setCustProduct] = useState("");
-    const [custQuanity, setCustQuantity] = useState(1);
+    const [custQuanity, setCustQuantity] = useState("");
     const [custunit, setCustUnit] = useState("");
     const [customerPrice, setCustomerPrice] = useState();
     const [customerCart, setCustomerCart] = useState([]);
@@ -175,7 +175,7 @@ function MainPage(){
 
     let totalPrice;
     if(unit == "gms"){
-        totalPrice = (quantity/1000)*custPrice
+        totalPrice = (quantity/1000)*price
     }
     else{
         totalPrice = price*quantity
@@ -373,9 +373,9 @@ function MainPage(){
                     </select>
 
                     {/* Quantity selection */}
-                    <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='number' value={quantity} min='1' onChange={(e) => setQuantity(Number(e.target.value))}/>
+                    <input style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='number' placeholder='Enter quantiy' value={quantity} min='1' onChange={(e) => setQuantity(Number(e.target.value))}/>
 
-                    <select value={unit} onChange={(e)=>setUnit(e.target.value)}>
+                    <select value={unit} onChange={(e)=>setUnit(e.target.value)} style={{width:"300px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}}>
                         <option value="">Select Unit</option>
                         {units.map((p) => (
                             <option key={p} value={p}>
@@ -414,8 +414,8 @@ function MainPage(){
                             {p}
                         </option>
                     ))}
-                </select>
-                <p>Enter per kg price if you are choosing gms/kg.</p>
+                </select><br></br>
+                <span style={{color:"red"}}>Enter per kg price if you are choosing gms/kg.</span><br></br><br></br>
                 <input placeholder='Enter Price' type="text" value={customerPrice} onChange={(e) => setCustomerPrice(e.target.value)}></input>
 
                 {/* Price x quantity */}
