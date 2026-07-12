@@ -232,6 +232,10 @@ function MainPage(){
         setCart(cart.filter((item) => item.id !== id));
     };
 
+    const handleDeleteForCustomers = (id) => {
+        setCustomerCart(customerCart.filter((item) => item.id !== id));
+    };
+
     // Final total
     let grandTotal;
     let balSNo;
@@ -465,7 +469,7 @@ function MainPage(){
                             <td>₹{item.customerPrice}</td>
                             <td>₹{item.custtotal}</td>
                             <td>
-                            <button onClick={() => handleDelete(item.id)}>
+                            <button onClick={() => handleDeleteForCustomers(item.id)}>
                                 Delete
                             </button>
                             </td>
