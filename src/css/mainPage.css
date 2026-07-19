@@ -174,11 +174,11 @@ button{
     visibility: hidden;
     }
 
-    .printBill, .printBill * {
+    .printBill, .printBill *{
         visibility: visible;
     }
 
-    .printBill {
+    .printBill{
         display: flex;
         flex-direction: column;
         height: 100vh;

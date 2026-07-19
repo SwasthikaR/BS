@@ -302,6 +302,7 @@ function MainPage(){
         // setBillNo(prev => prev + 1);
     };
 
+
     const currentDate = new Date();
     const date = currentDate.toISOString().split("T")[0];
     
@@ -330,6 +331,9 @@ function MainPage(){
                 <div>
                     <button onClick={() => navigate("/dashboard")}>
                         <DashboardIcon />
+                    </button>
+                    <button onClick={() => navigate("/courier")}>
+                        Courier
                     </button>
                 </div>
             </div>
@@ -483,6 +487,7 @@ function MainPage(){
             <h2>Total: ₹{grandTotal}</h2>
 
             <button onClick={handlePrint} style={{position:"relative", zIndex:"10000"}}>Print</button>
+
 
             {/* Formatting to print bill */}
             <div className='printBill'>
