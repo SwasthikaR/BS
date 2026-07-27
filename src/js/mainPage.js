@@ -12,7 +12,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 
 const units = ["kg", "gms", "pcs"]
 
-const productForCustomers = [ "Filter Coffee", "Instant Coffee", "Pepper", "Honey", "Small combo", "Medium combo", "Big combo" ]
+const productForCustomers = [ "Filter Coffee", "Instant Coffee", "Coffee Bean", "Pepper", "Honey", "Small combo", "Medium combo", "Big combo" ]
 
 const data = [
   {
@@ -406,7 +406,7 @@ function MainPage(){
                     ))}
                 </select><br></br>
                 <span style={{color:"red"}}>Enter per kg price if you are choosing gms/kg.</span><br></br><br></br>
-                <input placeholder='Enter Price' type="text" value={customerPrice} onChange={(e) => setCustomerPrice(e.target.value)}></input>
+                <input placeholder='Enter Price' type="text" value={customerPrice} onChange={(e) => setCustomerPrice(Number(e.target.value))}></input>
 
                 {/* Price x quantity */}
                 <input type='text' value={custTotalPrice ? `${custTotalPrice}`: ""} readOnly placeholder='Total price'/><br/>
