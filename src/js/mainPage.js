@@ -9,6 +9,9 @@ import eSign from "../image/eSign.jpeg"
 import esign1 from "../image/georgeEsign.jpeg"
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
+// import Inventory2Icon from "@mui/icons-material/Inventory2";
+// import PackageIcon from "@mui/icons-material/Package";
+import PrintIcon from "@mui/icons-material/Print";
 
 const units = ["kg", "gms", "pcs"]
 
@@ -333,7 +336,7 @@ function MainPage(){
                         <DashboardIcon />
                     </button>
                     <button onClick={() => navigate("/courier")}>
-                        Courier
+                        <PrintIcon/>
                     </button>
                 </div>
             </div>

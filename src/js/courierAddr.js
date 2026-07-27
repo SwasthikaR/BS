@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import "../css/courierAddr.css"
+import districts from "../data/statesAndDistricts.json"
 
-
-const indianStates = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala",
-    "Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh",
-    "Uttarakhand","West Bengal"];
 
 function CourierAddr() {
+
+    const states = Object.keys(districts);
 
     const [name, setName] = useState();
     const [addr, setAddr] = useState();
     const [state, setState] = useState();
+    const [district, setDistrict] = useState();
     const [ph, setPh] = useState();
     const [pincode, setPincode] = useState();
 
@@ -24,20 +24,32 @@ function CourierAddr() {
             
             <div className="inputDetails">
                 <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}></input>
-                <input placeholder="Address" value={addr} onChange={(e) => setAddr(e.target.value)} ></input>
+
+                <input className="textArea" placeholder="Address" type="textarea" rows="10" cols="10" value={addr} onChange={(e) => setAddr(e.target.value)} ></input>
+
                 <select value={state} onChange={(e)=>{setState(e.target.value)}}>
                     <option value="">Select State</option>
-                    {indianStates.map((s) => (
-                        <option key={s} value={s}>
-                            {s}
+                    {states.map((state) => (
+                        <option key={state} value={state}>
+                            {state}
                         </option>
                     ))}
-                </select>                
+                </select>     
+
+                <select value={district} onChange={(e)=>{setDistrict(e.target.value)}} disabled={!state}>
+                    <option value="">Select District</option>
+                    {state && districts[state].map((district) => (
+                        <option key={district} value={district}>
+                            {district}
+                        </option>
+                    ))}
+                </select>           
+
                 <input placeholder="Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} ></input>
-                <input placeholder="Phone number" value={ph} onChange={(e) => setPh(e.target.value)} ></input>
+
+                <input placeholder="Phone number" type="tel" maxLength={10} value={ph} onChange={(e) => setPh(e.target.value)} ></input>
             </div>
             
-    
             <button onClick={handleCourierAddr} style={{position:"relative", zIndex:"10000", marginLeft:"10px"}}>Print</button>
 
             {/* Formatting to print addr */}
@@ -52,7 +64,8 @@ function CourierAddr() {
                 <div className='toAddr'>
                     To<br></br>
                     {name}<br></br>
-                    {addr?.replace(/,/g, ",\n")},<br></br>
+                    <span style={{ whiteSpace: "pre-line" }}>{addr?.replace(/,\s*/g, ",\n")},<br></br></span>
+                    {district},<br></br>
                     {state},<br></br>
                     {pincode}.<br></br>
                     Ph. no: {ph}
