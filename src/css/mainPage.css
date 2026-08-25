@@ -156,12 +156,12 @@ button{
     margin-top: 150px;
   }
   .signature {
-  text-align: right;
-}
+   text-align: right;
+  }
 
-.signature img {
-  width: 120px; /* optional */
-}
+ .signature img {
+   width: 120px; /* optional */
+ }
 }
 
 

@@ -1,17 +1,67 @@
-import '../css/mainPage.css';
 import '../css/dashboard.css'
 import logo from "../image/tybwhitelogo.png";
 
 import { useNavigate } from 'react-router-dom';
+import {DatePicker} from "antd";
 import HomeIcon from "@mui/icons-material/Home";
+import { useState } from 'react';
 
 
+const resorts = ["Mango Hills", "DNC", "Nirmalayam"]
+
+const productsSold = [
+    {
+        name: "Filter coffee",
+        quantitySold: 50
+    },
+    {
+        name: "Instant coffee",
+        quantitySold: 50
+    },
+    {
+        name: "Honey",
+        quantitySold: 50
+    },
+    {
+        name: "Pepper",
+        quantitySold: 50
+    },
+    {
+        name: "Small Combo",
+        quantitySold: 50
+    },
+    {
+        name: "Medium combo",
+        quantitySold: 50
+    },
+    {
+        name: "Big combo",
+        quantitySold: 50
+    },
+]
 
 function Dashboard(){
 
+    const [resort, setResort] = useState("");
+    const [month, setMonth] = useState("");
+    const [year, setYear] = useState("")
+
     const navigate = useNavigate();
+
+    const handleMMYYChange = (e) => {
+        if(e){
+            setMonth(e.month()+1)
+            setYear(e.year());
+        }
+        else{
+            setMonth("");
+            setYear("");
+        }
+    };
+
     return(
-        <div>
+        <div className='dashboardMain'>
+
             <div className="header">
                 <div>
                     <img src={logo} alt='logo'></img><br/>
@@ -19,48 +69,42 @@ function Dashboard(){
                 </div>
                 <div>
                     <button onClick={() => navigate("/")}>
-                        <HomeIcon />
+                        <HomeIcon/>
                     </button>
                 </div>
             </div>
-            <div className="dashboardContent">
-                <h1>DASHBOARD</h1>
-                <h2>Individuals</h2>
-                <div className='productSales'>
-                    <div className='product'>
-                        <p>Instant coffee</p>
-                        <p>50</p>
-                    </div>
-                    <div className='product'>
-                        <p>Filter coffee</p>
-                        <p>20</p>
-                    </div>
-                    <div className='product'>
-                        <p>Honey</p>
-                        <p>30</p>
-                    </div>
-                    <div className='product'>
-                        <p>Black pepper</p>
-                        <p>10</p>
-                    </div>
-                </div>
-                <h2>Combos</h2>
-                <div className='comboProducts'>
-                    <div className='product'>
-                        <p>Small Combo</p>
-                        <p>10</p>
-                    </div>
-                    <div className='product'>
-                        <p>Medium Combo</p>
-                        <p>10</p>
-                    </div>
-                    <div className='product'>
-                        <p>Big Combo</p>
-                        <p>10</p>
-                    </div>
-                </div>
+
+            <h2>Dashboard</h2>
+
+            <div className='dashboardFilter'>
+                <select value={resort} onChange={(e)=>setResort(e.target.value)}>
+                    <option value="" disabled hidden>Select Resort</option>
+                    {resorts.map((r) => (
+                        <option key={r} value={r}>
+                            {r}
+                        </option>
+                    ))}
+                </select>
+                <DatePicker picker = "month" onChange={handleMMYYChange}/>
             </div>
+
+            {
+                resort && (
+                    <div className='dasboardDisplay'>
+                        <h2>{resort}</h2>
+                        <div className='productSalesDisplay'>
+                            {productsSold.map((prod) => (
+                                <div className='productItem'>
+                                    <p>{prod.name}</p>
+                                    <p>{prod.quantitySold}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
             
+
         </div>
     );
     

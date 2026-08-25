@@ -37,7 +37,9 @@ const data = [
       { name: "Filter Coffee", price: 220 },
       { name: "Instant Coffee", price: 240 },
       { name: "Pepper", price: 230},
-      { name: "Honey", price: 400}
+      { name: "Honey", price: 400},
+      { name: "Small Combo", price: 650},
+      { name: "Big Combo", price: 1200}
     ]
   },
   {

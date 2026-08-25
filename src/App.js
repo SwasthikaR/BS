@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter basename="/BS">
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/courier" element={<CourierAddr />} />
       </Routes>
     </BrowserRouter>

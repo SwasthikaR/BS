@@ -1,0 +1,116 @@
+{
+    customer: "Mango hills",
+    address: "Yercaud",
+    products: [
+      { name: "Filter Coffee", price: 230 },
+      { name: "Instant Coffee", price: 250 },
+      { name: "Pepper", price: 240},
+      { name: "Honey", price: 430},
+      { name: "Small Combo", price: 650},
+      { name: "Big Combo", price: 1200}
+    ]
+  },
+  {
+    customer: "Bison woods",
+    address: "Yercaud",
+    products: [
+      { name: "Filter Coffee", price: 220 },
+      { name: "Instant Coffee", price: 240 },
+      { name: "Pepper", price: 230},
+      { name: "Honey", price: 400}
+    ]
+  },
+  {
+    customer: "Nirmalayam",
+    address: "Banglore",
+    products: [
+      { name: "Filter Coffee (pure)", price: 225 },
+      { name: "Filter Coffee (80:20)", price: 210 },
+      { name: "Filter Coffee (90:10)", price: 225 },
+      { name: "Instant Coffee", price: 240 }
+    ]
+  },
+  {
+    customer: "Grand Palace",
+    address: "Yercaud",
+    products: [
+      { name: "Honey", price: 400},
+      { name: "Small combo", price: 350 },
+      { name: "Medium combo", price: 650 },
+      { name: "Big combo", price: 1200 }
+    ]
+  },
+  {
+    customer: "Lake Cafe",
+    address: "Yercaud",
+    products: [
+      { name: "Filter coffee", price: 880},
+      { name: "Instant coffee", price: 1700},
+      { name: "Black pepper", price: 240},
+      { name: "Roasted bean", price: 1000 }
+    ]
+  },
+  {
+    customer: "Kolaahalam",
+    address: "Yercaud",
+    products: [
+      { name: "Filter coffee", price: 230},
+      { name: "Instant coffee", price: 250},
+      { name: "Pepper", price: 240},
+      { name: "Honey", price: 430 },
+      { name: "Small combo", price: 625 }
+    ]
+  },
+  {
+    customer: "Kolaahalam Kodaikanal",
+    address: "Kodaikanal",
+    products: [
+      { name: "Filter coffee", price: 230},
+      { name: "Instant coffee", price: 250},
+      { name: "Pepper", price: 240},
+      { name: "Honey", price: 430 },
+      { name: "Small combo", price: 625 }
+    ]
+  },
+  {
+    customer: "DNC Shevaroys",
+    address: "Yercaud",
+    products: [
+      { name: "Filter coffee", price: 230},
+      { name: "Instant coffee", price: 250},
+      { name: "Pepper", price: 240},
+      { name: "Honey", price: 450 },
+      { name: "Small combo", price: 650 },
+      { name: "Big combo", price: 1200 }
+    ]
+  },
+  {
+    customer: "GRT",
+    address: "Yercaud",
+    products: [
+      { name: "Filter coffee", price: 230 },
+      { name: "Instant coffee", price: 250},
+      { name: "Pepper", price: 240},
+      { name: "Honey", price: 450 },
+      { name: "Small combo", price: 650 },
+      { name: "Big combo", price: 1200 }
+    ]
+  },
+  {
+    customer: "Bhavani Singh",
+    address: "Yercaud",
+    products: [
+      { name: "Instant coffee", price: 235},
+    ]
+  },
+  {
+    customer: "Customer",
+    products: [
+      { name: "Filter coffee"},
+      { name: "Instant coffee"},
+      { name: "Pepper"},
+      { name: "Honey"},
+      { name: "Small combo"},
+      { name: "Big combo"}
+    ]
+  }

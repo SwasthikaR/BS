@@ -1,9 +1,19 @@
+.mainPage{
+    padding: 15px;
+    padding: 0px 20px 20px 20px;
+}
+
+.mainPage h2{
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .inputDetails{
     margin: 10px;
 }
 
-.inputDetails input,.inputDetails select{
+.inputDetails input,.inputDetails select, .inputDetails textarea{
     width: 290px;
+    height: max-content;
     border:2px solid black;
     border-radius:5px;
     padding-top:10px; 
