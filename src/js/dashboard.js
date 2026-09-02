@@ -63,7 +63,7 @@ function Dashboard(){
         <div className='dashboardMain'>
 
             <div className="header">
-                <div>
+                <div className='headimg'>
                     <img src={logo} alt='logo'></img><br/>
                     <span style={{color:"white", paddingLeft:"20px"}}>The Yercaud Bean</span>
                 </div>
@@ -89,7 +89,7 @@ function Dashboard(){
             </div>
 
             {
-                resort && (
+                resort && month && year &&(
                     <div className='dasboardDisplay'>
                         <h2>{resort}</h2>
                         <div className='productSalesDisplay'>

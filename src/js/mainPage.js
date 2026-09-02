@@ -9,9 +9,8 @@ import eSign from "../image/eSign.jpeg"
 import esign1 from "../image/georgeEsign.jpeg"
 
 import DashboardIcon from "@mui/icons-material/Dashboard";
-// import Inventory2Icon from "@mui/icons-material/Inventory2";
-// import PackageIcon from "@mui/icons-material/Package";
 import PrintIcon from "@mui/icons-material/Print";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const units = ["kg", "gms", "pcs"]
 
@@ -152,6 +151,7 @@ function MainPage(){
     const [selectedDate, setSelectedDate] = useState("");
     const [balance, setBalance] = useState()
     const [custPrice, setCustPrice] = useState();
+    const [showMenu, setShowMenu] = useState(false);
 
     // only for customers
     const [cust, setCust] = useState("");
@@ -329,17 +329,24 @@ function MainPage(){
     return(
         <div className='maindiv'>
             <div className="header">
-                <div>
-                    <img src={logo} alt='logo'></img><br/>
+                <div className='headimg'>
+                    <img  src={logo} alt='logo'></img><br/>
                     <span style={{color:"white", paddingLeft:"20px"}}>The Yercaud Bean</span>
                 </div>
-                <div>
-                    <button onClick={() => navigate("/dashboard")}>
-                        <DashboardIcon />
-                    </button>
-                    <button onClick={() => navigate("/courier")}>
-                        <PrintIcon/>
-                    </button>
+                <div className='divForMenu'>
+                    <div className='burgerMenu'>
+                        <button onClick={() => setShowMenu(!showMenu)}>
+                            <MenuIcon />
+                        </button>
+                    </div>
+                    {showMenu && (<div className='menu'>
+                        <button onClick={() => navigate("/dashboard")}>
+                            <DashboardIcon />
+                        </button>
+                        <button onClick={() => navigate("/courier")}>
+                            <PrintIcon/>
+                        </button>
+                    </div>)}
                 </div>
             </div>
             <div className='mainbody'>

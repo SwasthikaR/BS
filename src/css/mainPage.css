@@ -6,9 +6,17 @@
     width: 100%;
 }
 
-.header img{
+.headimg img{
     width: 50px;
     padding-top: 12px;
+}
+
+.menu{
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    position: fixed;
+    z-index: 9999;
 }
 
 .mainbody{

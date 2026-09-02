@@ -7,6 +7,11 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+.headimg img{
+    width: 50px;
+    padding-top: 12px;
+}
+
 .inputDetails{
     margin: 10px;
 }
