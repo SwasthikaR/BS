@@ -3,14 +3,19 @@
 }
 
 html,
-body,
-#root {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-width: 100%;
+body
+{
     overflow-x: hidden;
+    /* margin: 0;
+    padding: 0;
+    /* width: 100%;
+    max-
+    : 100%; */ 
+    
 }
+/* #root{
+    width: 100%;
+} */
 .header{
     background-color: black;
     height: 100px;
@@ -193,49 +198,39 @@ button{
 }
 
 
-@media print {
-    @page {
+@media print{
+    @page{
         size: A4;
-        margin: 10mm;
+        margin: 20mm;
     }
-
     html,
     body {
-        margin: 0 !important;
-        padding: 0 !important;
+        margin: 0;
+        padding: 0;
         width: 100%;
-        height: auto !important;
-        overflow: hidden;
+        height: auto;
     }
-
     body * {
-        visibility: hidden;
+    visibility: hidden;
     }
 
-    .printBill,
-    .printBill * {
+    .printBill, .printBill *{
         visibility: visible;
     }
 
-    .printBill {
+    .printBill{
+        display: flex;
+        flex-direction: column;
+        height: auto;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: auto !important;
-        min-height: 0 !important;
-        display: block !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
+    .billHeader, .itemDisplayHeader{
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
 
-    .footer {
-        margin-top: 30px !important;
-    }
-
-    .billHeader,
-    .itemDisplayHeader {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
 }
