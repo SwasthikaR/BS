@@ -9,7 +9,7 @@ body,
     padding: 0;
     width: 100%;
     max-width: 100%;
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
 }
 .header{
     background-color: black;
@@ -153,7 +153,7 @@ button{
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .header{
     width: 100%;
     max-width: 100%;
@@ -192,30 +192,18 @@ button{
  }
 }
 
-@media screen {
-    html,
-    body,
-    #root {
-        overflow-x: hidden;
-    }
-}
-
 
 @media print{
-     
     @page{
         size: A4;
         margin: 20mm;
     }
     html,
-    body,
-    #root {
+    body {
         margin: 0;
         padding: 0;
         width: 100%;
-        max-width: none;
         height: auto;
-        overflow: visible !important;
     }
     body * {
     visibility: hidden;
@@ -225,13 +213,14 @@ button{
         visibility: visible;
     }
 
-    .printBill {
-        display: block;
+    .printBill{
+        display: flex;
+        flex-direction: column;
+        height: auto;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: auto;
     }
     .footer {
         margin-top: 50px;   /* don't use a large margin for print */
