@@ -24,6 +24,38 @@ function CourierAddr() {
 
     const navigate = useNavigate();
 
+    const handlePincode = async (e) => {
+        const value =e.target.value;
+
+        setPincode(value);
+
+        if(value.length === 6){
+            try{
+                const response = await fetch(
+                    `https://api.pincodeapi.in/api/v1/pincode/${value}`
+                );
+
+                const result = await response.json();
+
+                if(result.success && result.data.post_offices.length > 0){
+                    const postOffice = result.data.post_offices[0];
+
+                    setDistrict(postOffice.district);
+                    setState(postOffice.state);
+                }
+                else{
+                    setDistrict("");
+                    setState("");
+                }
+                    
+            }
+            catch(error){
+                console.error("Pincodelookup failed:", error);
+            }
+        }
+
+    }
+
     return(
         <div>
             <div className="header">
@@ -42,7 +74,8 @@ function CourierAddr() {
                     <div className="inputDetails">
                         <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}></input>
                         <textarea style={{marginBottom:"10px"}} placeholder="Address" rows="4" cols="10" value={addr} onChange={(e) => setAddr(e.target.value)} ></textarea>
-                        <select value={state} onChange={(e)=>{setState(e.target.value)}}>
+                        
+                        {/* <select value={state} onChange={(e)=>{setState(e.target.value)}}>
                             <option value="">Select State</option>
                             {states.map((state) => (
                                 <option key={state} value={state}>
@@ -58,9 +91,13 @@ function CourierAddr() {
                                     {district}
                                 </option>
                             ))}
-                        </select>           
+                        </select>            */}
 
-                        <input placeholder="Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} ></input>
+                        {/* <input placeholder="Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} ></input> */}
+                        <input type="text" placeholder="District" value={district} readOnly />
+
+                        <input type="text" placeholder="State" value={state} readOnly />
+                        <input type="text"  placeholder="pincode"  value={pincode} onChange={handlePincode}></input>
 
                         <input placeholder="Phone number" type="tel" maxLength={10} value={ph} onChange={(e) => setPh(e.target.value)} ></input>
                     </div>
@@ -88,7 +125,67 @@ function CourierAddr() {
                         </div>
                     </div>
                 </div>
+
+
+
+                {/* for safety */}
+                <div1>
+                <div className="mainPage">
+                    <h2>Courier Address - use this is incase the pincode doesnt work</h2>
+                        <div className="inputDetails">
+                            <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}></input>
+                            <textarea style={{marginBottom:"10px"}} placeholder="Address" rows="4" cols="10" value={addr} onChange={(e) => setAddr(e.target.value)} ></textarea>
+                            
+                            <select value={state} onChange={(e)=>{setState(e.target.value)}}>
+                                <option value="">Select State</option>
+                                {states.map((state) => (
+                                    <option key={state} value={state}>
+                                        {state}
+                                    </option>
+                                ))}
+                            </select>     
+
+                            <select value={district} onChange={(e)=>{setDistrict(e.target.value)}} disabled={!state}>
+                                <option value="">Select District</option>
+                                {state && districts[state].map((district) => (
+                                    <option key={district} value={district}>
+                                        {district}
+                                    </option>
+                                ))}
+                            </select>            
+                            
+
+                            <input placeholder="Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} ></input>
+
+                            <input placeholder="Phone number" type="tel" maxLength={10} value={ph} onChange={(e) => setPh(e.target.value)} ></input>
+                        </div>
+                        
+                        <button onClick={handleCourierAddr} style={{position:"relative", zIndex:"10000", marginLeft:"10px"}}>Print</button>
+
+                        {/* Formatting to print addr */}
+                        <div className='addrPrint'>
+                            <div className='fromAddr'>
+                                From<br></br>
+                                The Yercaud Bean,<br></br>
+                                Lady's seat Rd,<br></br>
+                                Yercaud.<br></br>
+                                Ph. no: 9994797824
+                            </div>
+                            <div className='toAddr'>
+                                To<br></br>
+                                {name}<br></br>
+                                <span style={{ whiteSpace: "pre-line" }}>{addr?.replace(/,\s*/g, ",\n")},<br></br></span>
+                                {district},<br></br>
+                                {state},<br></br>
+                                {pincode}.<br></br>
+                                Ph. no: {ph}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div1>
             </div>
+            
             
     )
 }

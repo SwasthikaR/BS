@@ -58,7 +58,7 @@
     .addrPrint {
         display: flex;
         justify-content: space-between;
-        font-size: 40px;
+        font-size: 35px;
         font-weight: bold;
         height: 100vh;
         position: absolute;
