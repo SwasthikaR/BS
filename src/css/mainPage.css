@@ -1,4 +1,4 @@
-/* * {
+* {
     box-sizing: border-box;
 }
 
@@ -10,7 +10,7 @@ body,
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-} */
+}
 .header{
     background-color: black;
     height: 100px;
@@ -196,7 +196,14 @@ button{
 @media print{
     @page{
         size: A4;
-        margin: 20;
+        margin: 20mm;
+    }
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: auto;
     }
     body * {
     visibility: hidden;
@@ -209,11 +216,14 @@ button{
     .printBill{
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        height: auto;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
+    }
+    .footer {
+        margin-top: 50px;   /* don't use a large margin for print */
     }
     .billHeader, .itemDisplayHeader{
         -webkit-print-color-adjust: exact;
