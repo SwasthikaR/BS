@@ -222,13 +222,13 @@ button{
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-    /* table {
+    table {
         page-break-inside: avoid;
     }
 
     tr {
         page-break-inside: avoid;
         page-break-after: auto;
-    } */
+    }
 
 }
