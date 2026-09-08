@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
 }
 
@@ -10,7 +10,7 @@ body,
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-}
+} */
 .header{
     background-color: black;
     height: 100px;
@@ -171,10 +171,10 @@ button{
   .inputDetails button{
     width: 100px;
   }
-  /* .itemDisplayTable{
+  .itemDisplayTable{
     width: 100%;
     max-width: 100%;
-  } */
+  }
   .itemDisplayTable, .itemDisplayTable th, .itemDisplayTable td, .itemDisplayTable tr{
     padding: 1px;
   }
@@ -196,7 +196,7 @@ button{
 @media print{
     @page{
         size: A4;
-        margin: 10mm;
+        margin: 20;
     }
     body * {
     visibility: hidden;
@@ -207,28 +207,18 @@ button{
     }
 
     .printBill{
-        display: block;
-        position: relative;
-        top: auto;
-        left: auto;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        max-width: 100%;
-        height: auto;
-        min-height: 0;
-        margin: 0;
-        padding: 0;
     }
     .billHeader, .itemDisplayHeader{
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-    table {
-        page-break-inside: avoid;
-    }
-
-    tr {
-        page-break-inside: avoid;
-        page-break-after: auto;
-    }
+    
 
 }
