@@ -193,42 +193,49 @@ button{
 }
 
 
-@media print{
-    @page{
+@media print {
+    @page {
         size: A4;
-        margin: 20mm;
-    }
-    html,
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: auto;
-    }
-    body * {
-    visibility: hidden;
+        margin: 10mm;
     }
 
-    .printBill, .printBill *{
+    html,
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+        height: auto !important;
+        overflow: hidden;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    .printBill,
+    .printBill * {
         visibility: visible;
     }
 
-    .printBill{
-        display: flex;
-        flex-direction: column;
-        height: auto;
+    .printBill {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
+        height: auto !important;
+        min-height: 0 !important;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
-    .footer {
-        margin-top: 50px;   /* don't use a large margin for print */
-    }
-    .billHeader, .itemDisplayHeader{
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
-    
 
+    .footer {
+        margin-top: 30px !important;
+    }
+
+    .billHeader,
+    .itemDisplayHeader {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 }
