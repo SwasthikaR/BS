@@ -21,7 +21,19 @@ h2{
   margin-top: 15px;
 }
 
+.detailedDisplayFilter{
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
 .dashboardFilter select{
+  margin-right: 10px;
+  padding: 6px;
+  padding-right: 20px;
+  border-radius: 5px;
+}
+
+.detailedDisplayFilter select{
   margin-right: 10px;
   padding: 6px;
   padding-right: 20px;
@@ -30,6 +42,16 @@ h2{
 
 .productSalesDisplay{
   display: flex;
+}
+
+.productDetailDisplayItem table, .productDetailDisplayItem tr, .productDetailDisplayItem th, .productDetailDisplayItem td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+
+.productSalesDetailDisplay{
+  margin: 10px;
 }
 
 .productItem{

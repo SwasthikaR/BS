@@ -40,11 +40,27 @@ const productsSold = [
     },
 ]
 
+const productSoldSheet = [
+    {
+        date: "23-09-26",
+        products: [{name: "Filter coffee", quantiy: "500g", price: "500"},{name: "Instant coffee", quantiy: "500g", price: "500"},{name: "Honey", quantiy: "500g", price: "500"}],
+        totalPrice: 1350
+    },
+    {
+        date: "24-09-26",
+        products: [{name: "Filter coffee", quantiy: "500g", price: "500"},{name: "Instant coffee", quantiy: "500g", price: "500"},{name: "Black pepper", quantiy: "500g", price: "500"},{name: "Honey", quantiy: "500g", price: "500"}],
+        totalPrice: 1350
+    }
+]
+
 function Dashboard(){
 
     const [resort, setResort] = useState("");
     const [month, setMonth] = useState("");
-    const [year, setYear] = useState("")
+    const [year, setYear] = useState("");
+    const [detailresort, setDetailResort] = useState("");
+    const [detailmonth, setDetailMonth] = useState("");
+    const [detailyear, setDetailYear] = useState("");
 
     const navigate = useNavigate();
 
@@ -56,6 +72,17 @@ function Dashboard(){
         else{
             setMonth("");
             setYear("");
+        }
+    };
+
+    const handledetailMMYYChange = (e) => {
+        if(e){
+            setDetailMonth(e.month()+1)
+            setDetailYear(e.year());
+        }
+        else{
+            setDetailMonth("");
+            setDetailYear("");
         }
     };
 
@@ -103,7 +130,478 @@ function Dashboard(){
                     </div>
                 )
             }
-            
+
+            <h2>Excel</h2>
+
+            <div className='detailedDisplayFilter'>
+                <select value={detailresort} onChange={(e)=>setDetailResort(e.target.value)}>
+                    <option value="" disabled hidden>Select Resort</option>
+                    {resorts.map((r) => (
+                        <option key={r} value={r}>
+                            {r}
+                        </option>
+                    ))}
+                </select>
+                <DatePicker picker = "month" onChange={handledetailMMYYChange}/>
+            </div>
+
+            {
+                detailresort && detailmonth && detailyear &&(
+                    <div className='dasboardDisplay'>
+                        <h2>{detailresort}</h2>
+                        <div className='productSalesDetailDisplay'>
+                        <div className='productDetailDisplayItem'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Particulars</th>
+                                        <th>Quanity</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                    {productSoldSheet.map((p, dateIndex) =>
+                                        p.products.map((i, productIndex) => (
+                                            <tr key={`${dateIndex}-${productIndex}`}>
+                                                <td>
+                                                    {productIndex === 0 ? p.date : ""}
+                                                </td>
+                                                <td>{i.name}</td>
+                                                <td>{i.quantiy}</td>
+                                                <td>{i.price}</td>
+                                                <td>{productIndex === 0 ? p.totalPrice : ""}</td>
+                                            </tr>
+                                        ))
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+                )
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
     );
