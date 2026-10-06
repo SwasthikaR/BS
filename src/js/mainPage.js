@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 const units = ["kg", "gms", "pcs"]
 
-const productForCustomers = [ "Filter Coffee", "Instant Coffee", "Coffee Bean", "Pepper", "Honey", "Small combo", "Medium combo", "Big combo" ]
+const productForCustomers = [ "Filter Coffee", "Instant Coffee", "Coffee Bean", "Pepper", "Honey", "Small combo", "Medium combo", "Big combo", "Chocolate Instant Coffee", "Vanilla Instant Coffee", "Hazelnut Instant Coffee" ]
 
 const data = [
   {
@@ -132,7 +132,10 @@ const data = [
       { name: "Pepper"},
       { name: "Honey"},
       { name: "Small combo"},
-      { name: "Big combo"}
+      { name: "Big combo"},
+      { name: "Chocolate Coffee"},
+      { name: "Hazelnut Coffee"},
+      { name: "Vanilla Coffee"}
     ]
   }
 ];
