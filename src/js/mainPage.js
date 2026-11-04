@@ -94,6 +94,17 @@ const data = [
     ]
   },
   {
+   customer: "Aradhana",
+    address: "Yercaud",
+    products: [
+      { name: "Filter coffee", price: 230},
+      { name: "Instant coffee", price: 250},
+      { name: "Pepper", price: 240},
+      { name: "Honey", price: 430 },
+      { name: "Small combo", price: 625 }
+    ] 
+  },
+  {
     customer: "DNC Shevaroys",
     address: "Yercaud",
     products: [
@@ -164,7 +175,7 @@ function MainPage(){
     const [custunit, setCustUnit] = useState("");
     const [customerPrice, setCustomerPrice] = useState();
     const [customerCart, setCustomerCart] = useState([]);
-    
+    const [courierCharge,setCourierCharge] = useState();
 
     const selectedCustomer = data.find((c) => c.customer === customer);
 
@@ -247,6 +258,8 @@ function MainPage(){
     // Final total
     let grandTotal;
     let balSNo;
+    let courierSNo;
+
     if(balance){
         grandTotal = cart.reduce((sum, item) => sum + item.total, 0);
         grandTotal+=balance;
@@ -254,9 +267,16 @@ function MainPage(){
     }
     else if (cart.length != 0) {
         grandTotal = cart.reduce((sum, item) => sum + item.total, 0);
-    } else {
+    }
+    else if(courierCharge){
+        grandTotal = customerCart.reduce((sum, item) => sum + item.custtotal, 0);
+        grandTotal+=courierCharge;
+        courierSNo = customerCart.length+1;
+    }
+    else {
         grandTotal = customerCart.reduce((sum, item) => sum + item.custtotal, 0);
     }
+
 
     // amount to word converion
 
@@ -396,6 +416,7 @@ function MainPage(){
                     <button onClick={handleAdd}>Add</button>
                 </div>
                 <input onChange={(e) => setBalance(Number(e.target.value))} style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='text' placeholder='Balance'/>
+                
 
         {/* for customers only */}
         <h2>Only for customers</h2>
@@ -425,6 +446,8 @@ function MainPage(){
 
                 {/* Price x quantity */}
                 <input type='text' value={custTotalPrice ? `${custTotalPrice}`: ""} readOnly placeholder='Total price'/><br/>
+
+                <input onChange={(e) => setCourierCharge(Number(e.target.value))} style={{width:"290px", border:"2px solid black", borderRadius:"5px", paddingTop:"10px", paddingBottom:"10px", paddingLeft:"5px"}} type='text' placeholder='Courier Charge'/><br></br>
 
                 {/* Add Button */}
                 <button onClick={handleAddCustomer}>Add</button>
@@ -568,6 +591,14 @@ function MainPage(){
                             <td style={{paddingLeft:"5px"}}>Balance</td>
                             <td style={{textAlign:"center"}} colSpan={2}>₹{balance}</td>
                             <td style={{textAlign:"center"}}>₹{balance}</td>
+                        </tr>
+                    )}
+                    {courierCharge > 0 &&(
+                        <tr>
+                            <td style={{textAlign:"center"}}>{courierSNo}</td>
+                            <td style={{paddingLeft:"5px"}}>Courier Charge</td>
+                            <td style={{textAlign:"center"}} colSpan={2}>₹{courierCharge}</td>
+                            <td style={{textAlign:"center"}}>₹{courierCharge}</td>
                         </tr>
                     )}
                 </table>
