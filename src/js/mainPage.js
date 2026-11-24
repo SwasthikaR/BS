@@ -117,6 +117,13 @@ const data = [
     ]
   },
   {
+    customer: "Tree of Life Shambala",
+    address: "Yercaud",
+    products: [
+      { name: "Small combo", price: 180 },
+    ]
+  },
+  {
     customer: "GRT",
     address: "Yercaud",
     products: [
@@ -133,6 +140,10 @@ const data = [
     address: "Yercaud",
     products: [
       { name: "Instant coffee", price: 235},
+      { name: "Hazelnut Instant coffee", price: 260},
+      { name: "Vanilla Instant coffee", price: 260},
+      { name: "Irish Instant coffee", price: 265},
+      { name: "Chocolate Instant coffee", price: 265},
     ]
   },
   {
@@ -373,7 +384,7 @@ function MainPage(){
                 </div>
             </div>
             <div className='mainbody'>
-                <h2>Credit Bill</h2>
+                <h2>Invoice Bill</h2>
                 <div className='selectDateandBillNo'>
                     <div>
                         <input type='date' style={{marginRight:"10px", paddingTop:"3px", paddingBottom:"3px"}} value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} disabled={!isManual}></input>
@@ -530,7 +541,7 @@ function MainPage(){
             {/* Formatting to print bill */}
             <div className='printBill'>
                 <div className='billHeader'>
-                    Credit Bill
+                    Invoice Bill
                 </div>
                 <div className='ownerDetails'>
                     <div className='ownerDetailsLeft'>
