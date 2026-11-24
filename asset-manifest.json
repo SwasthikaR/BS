@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/BS/static/css/main.96244d38.css",
-    "main.js": "/BS/static/js/main.4b62f772.js",
+    "main.css": "/BS/static/css/main.4db1d4ab.css",
+    "main.js": "/BS/static/js/main.6efad215.js",
     "static/js/453.25d23d32.chunk.js": "/BS/static/js/453.25d23d32.chunk.js",
+    "static/media/tyb logo.png": "/BS/static/media/tyb logo.4ddde592c9933b827cfc.png",
     "static/media/tybwhitelogo.png": "/BS/static/media/tybwhitelogo.a61d2c2635f5ada02f1e.png",
     "static/media/eSign.jpeg": "/BS/static/media/eSign.835add1d03a07edeece8.jpeg",
     "static/media/georgeEsign.jpeg": "/BS/static/media/georgeEsign.7c2460d9748c83d5653c.jpeg",
     "index.html": "/BS/index.html",
-    "main.96244d38.css.map": "/BS/static/css/main.96244d38.css.map",
-    "main.4b62f772.js.map": "/BS/static/js/main.4b62f772.js.map",
+    "main.4db1d4ab.css.map": "/BS/static/css/main.4db1d4ab.css.map",
+    "main.6efad215.js.map": "/BS/static/js/main.6efad215.js.map",
     "453.25d23d32.chunk.js.map": "/BS/static/js/453.25d23d32.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.96244d38.css",
-    "static/js/main.4b62f772.js"
+    "static/css/main.4db1d4ab.css",
+    "static/js/main.6efad215.js"
   ]
 }
