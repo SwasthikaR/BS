@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/BS/static/css/main.4db1d4ab.css",
-    "main.js": "/BS/static/js/main.6efad215.js",
+    "main.js": "/BS/static/js/main.36c3a7b3.js",
     "static/js/453.25d23d32.chunk.js": "/BS/static/js/453.25d23d32.chunk.js",
     "static/media/tyb logo.png": "/BS/static/media/tyb logo.4ddde592c9933b827cfc.png",
     "static/media/tybwhitelogo.png": "/BS/static/media/tybwhitelogo.a61d2c2635f5ada02f1e.png",
@@ -9,11 +9,11 @@
     "static/media/georgeEsign.jpeg": "/BS/static/media/georgeEsign.7c2460d9748c83d5653c.jpeg",
     "index.html": "/BS/index.html",
     "main.4db1d4ab.css.map": "/BS/static/css/main.4db1d4ab.css.map",
-    "main.6efad215.js.map": "/BS/static/js/main.6efad215.js.map",
+    "main.36c3a7b3.js.map": "/BS/static/js/main.36c3a7b3.js.map",
     "453.25d23d32.chunk.js.map": "/BS/static/js/453.25d23d32.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4db1d4ab.css",
-    "static/js/main.6efad215.js"
+    "static/js/main.36c3a7b3.js"
   ]
 }
